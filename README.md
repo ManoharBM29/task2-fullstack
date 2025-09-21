@@ -1,152 +1,112 @@
-FullStack -
-Backend (Express + Postgres)
+# 🚀 Task2 Fullstack App
 
-[ ] Database Setup
+A fullstack web application built with *React* (frontend) and *Express + PostgreSQL* (backend) implementing *user authentication with JWT* 🔐.
 
-Create users table with fields: id, name, phone, email (unique), password_hash, created_at.
+---
 
+## ✨ Features
 
-[ ] Environment Variables
+- 📝 *Sign Up*: Create new user, validate inputs, hash password, return JWT  
+- 🔑 *Sign In*: Validate credentials, return JWT  
+- 🛡 *Protected Route*: /api/users/me returns logged-in user info  
+- 💾 *Token Handling*: Store JWT in localStorage, used for API requests  
+- 🚪 *Sign Out*: Clears token and user info  
 
-Add DB connection details in .env.
+---
 
-Add JWT_SECRET and JWT_EXPIRES_IN.
+## ⚡ Installation
 
+### Backend
 
-[ ] User Registration (Sign Up API)
+cd backend
+npm install
 
-Validate inputs: name, phone, email, password (all required).
+Create .env file with:
 
-Check if email already exists in DB.
+DB_HOST=localhost
+DB_USER=your_db_username
+DB_PASSWORD=your_db_password
+DB_NAME=your_db_name
+DB_PORT=5432
+JWT_SECRET=supersecretkey
+JWT_EXPIRES_IN=1d
 
-Hash password securely.
+Start backend server:
 
-Save new user to DB.
+npm run dev
 
-Generate JWT token and return { user, token }.
+Frontend
 
+cd frontend
+npm install
+npm start
 
-[ ] User Login (Sign In API)
-
-Validate inputs: email, password.
-
-Find user by email.
-
-Compare entered password with stored hash.
-
-If valid → return { user, token }.
-
-If invalid → return error.
-
-
-[ ] JWT Middleware
-
-Extract token from Authorization: Bearer <token> header.
-
-Verify JWT → attach user info to request.
-
-Reject requests with invalid/missing token.
-
-
-[ ] Profile API (Optional)
-
-GET /api/users/me → return current logged-in user’s data.
+> 🌐 Frontend: http://localhost:3000
+🔌 Backend: http://localhost:5000
 
 
 
 
 ---
 
-✅ Frontend (React)
+🏃‍♂ Usage
 
-[ ] Landing Page
-
-Show two buttons: Sign Up and Sign In.
+1. Open the app in your browser
 
 
-[ ] Sign Up Page
-
-Form with 4 fields: Name, Phone, Email, Password.
-
-Validate all fields before submit.
-
-Call backend /signup API.
-
-On success → save token + user in localStorage → redirect to Home.
+2. 📝 Sign Up with a new email
 
 
-[ ] Sign In Page
-
-Form with Email, Password.
-
-Validate both fields.
-
-Call backend /signin API.
-
-On success → save token + user in localStorage → redirect to Home.
+3. 🔑 Sign In with existing credentials
 
 
-[ ] Home Page
-
-Fetch user profile (from localStorage or /me API).
-
-Display Name and Phone.
-
-Show Sign Out button → clears token + user from localStorage → redirect to Sign In.
+4. 🏠 View Home page showing Name + Phone
 
 
-[ ] Error Handling
-
-Show messages for invalid credentials, duplicate email, missing fields, etc.
-
-
-[ ] Token Handling
-
-Store JWT token in localStorage after login/signup.
-
-Add token to API requests in Authorization header when required.
-
-Clear token on logout.
+5. 🚪 Sign Out to remove token
 
 
 
 
 ---
 
-✅ Testing (Postman + Browser)
+✅ Testing
 
-[ ] Test Sign Up with new email → success.
+🟢 Sign Up / Sign In with valid inputs
 
-[ ] Test Sign Up with existing email → error.
+🔴 Sign Up / Sign In with invalid inputs → error messages
 
-[ ] Test Sign In with correct credentials → success.
+🛡 Access /api/users/me with valid/invalid JWT
 
-[ ] Test Sign In with wrong credentials → error.
+💾 Verify JWT stored in localStorage
 
-[ ] Test Protected routes with token → success.
-
-[ ] Test Protected routes without/invalid token → unauthorized error.
-
-[ ] Confirm Home page shows Name + Phone after login.
+🚪 Sign Out removes token and blocks access
 
 
 
 ---
 
-✅ Deliverables
+📸 Screenshots
 
-[ ] Working backend server (Express + Postgres + JWT).
+1. Sign Up success ✅
 
-[ ] Working frontend app (React with Sign Up, Sign In, Home screens).
 
-[ ] .env.example file in repo.
+2. Sign In success ✅
 
-[ ] Public GitHub repo with backend + frontend code.
 
-[ ] Screenshots:
+3. Home page showing Name + Phone 🏠
 
-Signup success
 
-Signin success
 
-Home screen with Name + Phone
+
+---
+
+🛠 Technologies
+
+Frontend: React, React Router DOM
+
+Backend: Node.js, Express, PostgreSQL, bcryptjs, jsonwebtoken, cors, dotenv
+
+
+
+---
